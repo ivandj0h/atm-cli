@@ -57,6 +57,7 @@ python atm_json_enterprise.py
 | `withdraw [jumlah]`           | Menarik uang dari saldo                     |
 | `transfer [target] [jumlah]`  | Kirim uang ke pengguna lain                 |
 | `history`                      | Lihat semua transaksi sebelumnya            |
+| `saldo`                        | Menampilkan saldo dan info akun terkini     |
 | `logout`                       | Keluar dari akun                            |
 
 ---
