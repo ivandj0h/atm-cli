@@ -4,10 +4,14 @@ ATM Command Line Interface (CLI) ini adalah simulasi sistem ATM berbasis Python 
 
 ---
 
+![Terminal](./terminal.png)
+
+
 ## 🚀 Fitur Utama
 
-- 🔐 **Login dengan PIN**
-- 💸 **Deposit, Withdraw, Transfer**
+- 🔐 **Login dengan PIN (disembunyikan saat diketik)**
+- 💳 **Nomor rekening otomatis saat user pertama login**
+- 💸 **Deposit, Withdraw, Transfer (dengan konfirmasi)**
 - 📢 **Notifikasi penerimaan transfer** (hanya tampil sekali saat login)
 - 📊 **Tampilan saldo & utang/ piutang dalam bentuk tabel (tabulate)**
 - 📜 **Riwayat transaksi per user**
@@ -55,9 +59,9 @@ python atm_json_enterprise.py
 | `login [nama]`                 | Login (atau buat akun baru + PIN)           |
 | `deposit [jumlah]`            | Menambahkan saldo                           |
 | `withdraw [jumlah]`           | Menarik uang dari saldo                     |
-| `transfer [target] [jumlah]`  | Kirim uang ke pengguna lain                 |
+| `transfer [target] [jumlah]`  | Kirim uang ke pengguna lain (dengan konfirmasi) |
 | `history`                      | Lihat semua transaksi sebelumnya            |
-| `saldo`                        | Menampilkan saldo dan info akun terkini     |
+| `saldo`                        | Menampilkan saldo, nomor rekening, utang    |
 | `logout`                       | Keluar dari akun                            |
 
 ---
@@ -66,7 +70,7 @@ python atm_json_enterprise.py
 
 - File ini dibuat otomatis saat pertama kali aplikasi menyimpan data
 - Jangan edit manual jika tidak paham format JSON
-- Isinya menyimpan semua data user: saldo, utang, PIN, riwayat, dll
+- Isinya menyimpan semua data user: saldo, nomor rekening, PIN, riwayat, dll
 
 ---
 
@@ -74,7 +78,7 @@ python atm_json_enterprise.py
 
 - Jalankan dari **2 terminal berbeda** untuk simulasi multi-user
 - Login sebagai user berbeda dan saling transfer untuk lihat notifikasi real-time
-- Tekankan fitur warna-warni & notifikasi saat presentasi 😎
+- Tekankan fitur warna-warni, nomor rekening otomatis, dan keamanan PIN saat presentasi 😎
 
 ---
 
@@ -83,6 +87,7 @@ python atm_json_enterprise.py
 - Python 3.x
 - tabulate (untuk tampilan tabel)
 - colorama (untuk warna terminal)
+- getpass (untuk input PIN tersembunyi)
 - JSON file-based storage (data.json)
 
 ---
@@ -114,3 +119,4 @@ MIT License — Silakan pakai, ubah, fork, tapi jangan lupa traktir kopi kalau s
 ## 🙌 Credit
 
 Dibuat dengan penuh semangat oleh [ivandjoh @2025](https://github.com/ivanj0h) 💻✨
+
