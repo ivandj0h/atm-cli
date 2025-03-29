@@ -3,6 +3,7 @@ import os
 import random
 from tabulate import tabulate
 from colorama import init, Fore
+from getpass import getpass  # ✅ Untuk sembunyikan input PIN
 
 init(autoreset=True)
 
@@ -33,7 +34,7 @@ class ATM:
 
     def login(self, name):
         if name not in self.data:
-            pin = input("Buat PIN baru untuk akun ini: ")
+            pin = getpass("Buat PIN baru untuk akun ini: ")
             account_number = self.generate_account_number()
             self.data[name] = {
                 "pin": pin,
@@ -47,7 +48,7 @@ class ATM:
             print(Fore.GREEN + f"Akun baru berhasil dibuat! No. Rekening: {account_number}")
         else:
             for _ in range(3):
-                pin = input("Masukkan PIN: ")
+                pin = getpass("Masukkan PIN: ")
                 if pin == self.data[name]["pin"]:
                     break
                 else:
@@ -56,11 +57,17 @@ class ATM:
                 print(Fore.RED + "Terlalu banyak percobaan. Login gagal.")
                 return
 
+            # ✅ Patch untuk user lama (tanpa nomor rekening)
+            if "account_number" not in self.data[name]:
+                self.data[name]["account_number"] = self.generate_account_number()
+                print(Fore.YELLOW + "(Auto-migrasi) Nomor rekening berhasil dibuat untuk akun lama.")
+
         self.current_user = name
         print(Fore.CYAN + f"\nHalo, {name}!")
         print(Fore.CYAN + f"No. Rekening: {self.data[name]['account_number']}")
         self.show_notifications()
         self.print_balance()
+        self.save_data()  # ✅ simpan hasil auto-migrasi rekening
 
     def logout(self):
         if self.current_user:
@@ -114,7 +121,7 @@ class ATM:
             return
 
         if target not in self.data:
-            pin = input(f"Buat PIN baru untuk akun {target}: ")
+            pin = getpass(f"Buat PIN baru untuk akun {target}: ")
             account_number = self.generate_account_number()
             self.data[target] = {
                 "pin": pin,
