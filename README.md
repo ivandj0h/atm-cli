@@ -1,6 +1,6 @@
-# 💳 ATM CLI Enterprise Edition
+# 💳 ATM Enterprise Edition - CLI Version
 
-ATM Command Line Interface (CLI) ini adalah simulasi sistem ATM berbasis Python dengan fitur lengkap ala enterprise, cocok untuk demo, pembelajaran, atau proyek pribadi. Dikembangkan dengan cinta oleh CTO Tersayang 😎
+ATM Command Line Interface (CLI) ini adalah simulasi sistem ATM berbasis Python dengan fitur lengkap ala enterprise, cocok untuk demo, pembelajaran, atau proyek pribadi.  😎
 
 ---
 
